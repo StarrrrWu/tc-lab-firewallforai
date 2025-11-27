@@ -81,10 +81,18 @@ async function sendMessage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        messages: chatHistory,
-      }),
-    });
-
+          messages: [
+         {
+           role: "assistant",
+           content: "You are a helpful, friendly assistant. Provide concise and accurate responses.",
+         },
+         {
+           role: "user",
+           content: message,
+         },
+      ],
+   }),
+ });    
     // Handle errors
     if (!response.ok) {
       throw new Error("Failed to get response");
@@ -130,7 +138,7 @@ async function sendMessage() {
     console.error("Error:", error);
     addMessageToChat(
       "assistant",
-      "Sorry, there was an error processing your request.",
+      "很抱歉，你發送的問題被封鎖，請重新發問。",
     );
   } finally {
     // Hide typing indicator
