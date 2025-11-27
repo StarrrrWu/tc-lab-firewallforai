@@ -138,7 +138,7 @@ async function sendMessage() {
     console.error("Error:", error);
     addMessageToChat(
       "assistant",
-      "<br>Sorry, 您問題內容有不當文字，請重新發問。",
+      "Sorry, 您問題內容有不當文字，請重新發問。",
     );
   } finally {
     // Hide typing indicator
