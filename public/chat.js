@@ -74,14 +74,14 @@ async function sendMessage() {
     // Scroll to bottom
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // Send request to API
+    // Send request to API    
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          messages: [
+        messages: [
          {
            role: "assistant",
            content: "You are a helpful, friendly assistant. Provide concise and accurate responses.",
@@ -92,7 +92,7 @@ async function sendMessage() {
          },
       ],
    }),
- });    
+ });
     // Handle errors
     if (!response.ok) {
       throw new Error("Failed to get response");
@@ -138,7 +138,7 @@ async function sendMessage() {
     console.error("Error:", error);
     addMessageToChat(
       "assistant",
-      "很抱歉，你發送的問題被封鎖，請重新發問。",
+      "很抱歉，你發送的問題被封鎖，請重新發問。<br>Sorry",
     );
   } finally {
     // Hide typing indicator
